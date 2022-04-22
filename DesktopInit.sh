@@ -2,7 +2,9 @@
 # Cloudinit script
 # - to store in OBS s3://obs-jla-repo
 # - to execute through cloudinit running the following command
-#   curl https://obs-jla-repo.oss.eu-west-0.prod-cloud-ocb.orange-business.com/DesktopInit.sh | tee DesktopInit.sh && chmod 755 DesktopInit.sh && ./DesktopInit.sh
+#   sudo bash -c  "curl https://obs-jla-repo.oss.eu-west-0.prod-cloud-ocb.orange-business.com/DesktopInit.sh | tee DesktopInit.sh && chmod 755 DesktopInit.sh && ./DesktopInit.sh"
+
+sudo echo "Cloudint is stating...\n" > /tmp/mycloudinit.log
 
 sudo apt update
 
@@ -12,6 +14,7 @@ sudo apt install ubuntu-desktop -y
 # Add a specifica user fot Remote Access
 sudo groupadd jlardouin --gid 1000
 sudo useradd jlardouin --uid 1000 --home /home/jlardouin/ --create-home --groups jlardouin --gid jlardouin --shell /bin/bash
+sudo bash -c "echo jlardouin:azerty | chpasswd"
 sudo usermod -aG sudo jlardouin
 
 # Install & configure Remote Destop with xrdp service
@@ -38,3 +41,6 @@ sudo cp /tmp/02-allow-colord.conf /etc/polkit-1/localauthority.conf.d
 sudo curl https://obs-jla-repo.oss.eu-west-0.prod-cloud-ocb.orange-business.com/EcsInit.sh | tee EcsInit.sh && chmod 755 EcsInit.sh && ./EcsInit.sh
 
 # Then simply configure that desktop in Guacamole Remote Access
+# And then rebbot to take in account all the modif
+sudo echo "Cloudint is over..." >> /tmp/mycloudinit.log
+sudo reboot
