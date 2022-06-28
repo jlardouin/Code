@@ -10,12 +10,13 @@ echo "----------------------------------"
 echo "----------------------------------"
 echo "Downloading SMS Agent..."
 echo "----------------------------------"
-wget -t 3 -T 15 https://sms-agent-bucket.oss.eu-west-0.prod-cloud-ocb.orange-business.com/SMS-Agent.tar.gz
+#wget -t 3 -T 15 https://sms-agent-bucket.oss.eu-west-0.prod-cloud-ocb.orange-business.com/SMS-Agent.tar.gz
+wget -t 3 -T 15 https://obs-jla-repo.oss.eu-west-0.prod-cloud-ocb.orange-business.com/SMS-Agent.tar.gz
 
 echo "----------------------------------"
 echo "?? SMS Agent..."
 echo "----------------------------------"
-curl -O https://sms-agent-bucket.oss.eu-west-0.prod-cloud-ocb.orange-business.com/SMS-Agent.tar.gz
+curl -O https://obs-jla-repo.oss.eu-west-0.prod-cloud-ocb.orange-business.com/SMS-Agent.tar.gz
 
 echo "----------------------------------"
 echo "Uncompressing SMS Agent..."
